@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103d31">
+  <meta name="description" content="VidyaSutra: Where E-Waste Powers Education. A campus e-waste initiative for students of Vaish College of Engineering, Rohtak.">
+  <title>VidyaSutra — Where E-Waste Powers Education</title>
+  <link rel="icon" href="vaish-college-seal.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js-enabled');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- An animated, self-contained loading moment; it never blocks the page for long. -->
+  <div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading VidyaSutra">
+    <div class="loader-glow" aria-hidden="true"></div>
+    <div class="loader-orbit loader-orbit-outer" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="loader-orbit loader-orbit-inner" aria-hidden="true"><span></span></div>
+    <div class="loader-brand-mark"><img src="vaish-college-seal.jpg" alt="" aria-hidden="true"></div>
+    <p class="loader-brand-name">Vidya<span>Sutra</span></p>
+    <p class="loader-message"><span>Old Gadgets.</span><span>New Futures.</span><strong>Welcome to VidyaSutra.</strong></p>
+    <div class="loader-track" aria-hidden="true"><span></span></div>
+    <span class="loader-caption">Vaish College of Engineering · Rohtak</span>
+  </div>
+
+  <!-- Inline icon sprite: no external icon library or network dependency. -->
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M20.5 3.5C12 3.7 6.6 5.8 4 10.2c-2.4 4.1-.7 8.6 3 9.5 4.7 1.1 8.8-2 9.3-6.5.3-2.7-.5-4.7-2.1-6.3 2.2-.9 4.3-1.4 6.3-1.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 20c3-5 6.7-8.5 11-11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-recycle" viewBox="0 0 24 24"><path d="m8.2 4.4 2.1-1.2 2.2 3.8M15.7 5.1l2.1 3.7-2.1 1.2M19 12l1.4 2.3-2.2 3.9H14m-4.2 0H5.2L3 14.4l1.3-2.2M5.1 8.9l2.2-3.8 2.2 1.3M9 12h6m-3-3 3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-cap" viewBox="0 0 24 24"><path d="m2.5 9.2 9.5-5 9.5 5-9.5 5-9.5-5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M6.5 11.4v4.2c3.4 2.6 7.6 2.6 11 0v-4.2M21.5 9.3v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 19 6v5.2c0 4.4-2.9 7.9-7 9.8-4.1-1.9-7-5.4-7-9.8V6l7-3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 5h4m-3 13.5h2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="icon-laptop" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M2.5 19h19l-1.3 1.5H3.8L2.5 19Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-cable" viewBox="0 0 24 24"><path d="M7 3v5m4-5v5m-6 0h8v2a4 4 0 0 1-4 4h-1v2a4 4 0 0 0 4 4h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17h4v4h-4z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-keyboard" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 9h.1M9 9h.1m2.9 0h.1m2.9 0h.1m2.9 0h.1M6 12h.1m2.9 0h.1m2.9 0h.1m2.9 0h.1m2.9 0h.1M8 15h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="icon-headphones" viewBox="0 0 24 24"><path d="M4 13v-2a8 8 0 0 1 16 0v2M4 13h3v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2Zm16 0h-3v7h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-battery" viewBox="0 0 24 24"><rect x="3" y="7" width="17" height="10" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M20 10h2v4h-2M8 10v4m-2-2h4m4-2v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="icon-box" viewBox="0 0 24 24"><path d="m3.5 7 8.5-4 8.5 4v10l-8.5 4-8.5-4V7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m3.8 7.2 8.2 4 8.2-4M12 11.2V21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.4-8.8 11-8.8 11s-8.8-5.6-8.8-11A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.8 2.8Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 12h2l1.1-2.2 1.8 4.4 1.1-2.2h2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 19v-1.6c0-2 1.7-3.6 3.7-3.6h3.6c2 0 3.7 1.6 3.7 3.6V19H3.5ZM16 5.4a3 3 0 0 1 0 5.8m1.2 2.6c2 0 3.3 1.6 3.3 3.6V19h-2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 1 1 8 0v3m-4 4v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 2 1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2ZM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m8 12 2.6 2.6L16.5 9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <div class="announcement-strip">
+    <div class="container announcement-inner">
+      <p><span class="announcement-dot" aria-hidden="true"></span> A campus initiative for students of Vaish College of Engineering, Rohtak</p>
+      <a href="#how-it-works">Explore the idea <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+    </div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container nav-container">
+      <a class="brand" href="#home" aria-label="VidyaSutra at Vaish College of Engineering, Rohtak — home">
+        <span class="brand-mark"><img src="vaish-college-seal.jpg" alt="Vaish College of Engineering, Rohtak crest"></span>
+        <span class="brand-name"><span class="brand-word">Vidya<span>Sutra</span></span><small>Where E-Waste Powers Education.</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+        <svg class="icon menu-open-icon" aria-hidden="true"><use href="#icon-menu"></use></svg>
+        <svg class="icon menu-close-icon" aria-hidden="true"><use href="#icon-close"></use></svg>
+      </button>
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+        <a href="#about">Why VidyaSutra</a>
+        <a href="#donate-items">What to donate</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#prepare">Safe handover</a>
+        <a href="#faq">FAQs</a>
+        <a class="button button-small button-dark nav-cta" href="#interest">I'm interested <svg class="icon" aria-hidden="true"><use href="#icon-up-right"></use></svg></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero-section" id="home" aria-labelledby="hero-title">
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-light"><span class="eyebrow-mark"></span> For the students of Vaish College of Engineering</p>
+          <h1 id="hero-title">Vaish students, your old tech can <span>help power new futures.</span></h1>
+          <p class="hero-description">A message from Vaish College of Engineering, Rohtak, to our students: give unused phones, laptops and accessories a more responsible next step. VidyaSutra brings our campus community together around e-waste awareness and the hope that verified recycling contributions can support education.</p>
+          <div class="hero-actions">
+            <a class="button button-lime" href="#interest">I’m interested in donating <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            <a class="button button-outline-light" href="#donate-items">See what you can give</a>
+          </div>
+          <p class="hero-honesty"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg> This is a campus project concept. Registering interest is not a pickup booking; any real collection would need confirmed college arrangements and authorized partners.</p>
+          <div class="hero-values" aria-label="VidyaSutra values">
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-leaf"></use></svg> Responsible reuse</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-cap"></use></svg> Student-powered</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-heart"></use></svg> Community-minded</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="art-orbit orbit-back" aria-hidden="true"></div>
+          <div class="art-orbit orbit-front" aria-hidden="true"></div>
+          <svg class="hero-illustration" viewBox="0 0 640 520" role="img" aria-labelledby="hero-art-title hero-art-desc" xmlns="http://www.w3.org/2000/svg">
+            <title id="hero-art-title">Students giving old technology a responsible next chapter</title>
+            <desc id="hero-art-desc">A bright illustration of two students beside a collection box for electronics, a laptop, a phone and growing plants.</desc>
+            <defs>
+              <linearGradient id="art-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f4df"/><stop offset="1" stop-color="#dbead2"/></linearGradient>
+              <linearGradient id="box-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#399574"/><stop offset="1" stop-color="#145441"/></linearGradient>
+              <linearGradient id="shirt-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1c175"/><stop offset="1" stop-color="#e88e5d"/></linearGradient>
+              <clipPath id="art-clip"><rect width="640" height="520" rx="30"/></clipPath>
+            </defs>
+            <g clip-path="url(#art-clip)">
+              <rect width="640" height="520" fill="url(#art-bg)"/>
+              <circle cx="520" cy="72" r="40" fill="#f3d26e" opacity=".9"/>
+              <circle cx="104" cy="74" r="116" fill="#d8e8ca" opacity=".72"/>
+              <path d="M0 323c110-45 184-20 276-4 108 19 218-23 364-15v216H0V323Z" fill="#d0e3c8"/>
+              <path d="M0 400c98-30 177-20 266-4 123 22 251-8 374-28v152H0V400Z" fill="#c1d9bd"/>
+              <path d="M45 188h133v153H45z" fill="#f8f7e9" opacity=".72"/>
+              <path d="M60 211h46v51H60zM120 211h45v51h-45zM60 280h46v43H60zM120 280h45v43h-45z" fill="#bdd7c4"/>
+              <path d="M34 188h157v12H34z" fill="#527e67" opacity=".55"/>
+              <path d="M457 168h130v139H457z" fill="#eff2df" opacity=".8"/>
+              <path d="M473 189h43v43h-43zM530 189h42v43h-42zM473 249h43v43h-43zM530 249h42v43h-42z" fill="#b5d0bc"/>
+              <path d="M447 165h151v12H447z" fill="#527e67" opacity=".55"/>
+              <path d="M224 248c-27-85 33-151 108-150 41 1 69 17 89 45" fill="none" stroke="#83aa78" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 12"/>
+              <path d="m405 126 22 17-26 8" fill="none" stroke="#83aa78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Student with a reusable tote -->
+              <path d="m201 422 8-87 39-5 26 91-17 3-22-57-14 58-18-3Z" fill="#314a62"/>
+              <path d="m215 419 25 1 5 14h-35zM251 420l16-3 13 13h-30z" fill="#e96f4c"/>
+              <path d="M207 237c5-25 31-39 55-26 18 9 24 28 21 50l-9 70c-23 19-53 14-71-1l-4-62c-2-13 1-24 8-31Z" fill="url(#shirt-grad)"/>
+              <path d="m205 268-24 38 12 44 14-4-6-31 24-26m51-24 24 37-8 38-14-2 3-28-23-26" fill="#e9a86a"/>
+              <path d="M193 343c-2 8 4 16 12 17l9 1 1-16-15-8-7 6Z" fill="#be7751"/>
+              <path d="M203 210c-2-25 11-42 33-43 22-2 38 15 38 38 0 17-8 30-21 36-12 5-29 2-39-9-7-8-11-14-11-22Z" fill="#c9805a"/>
+              <path d="M201 210c-5-19 1-40 15-50 18-14 47-8 58 10l-2 23c-10-4-17-11-23-19-9 15-26 24-47 26l-1 10Z" fill="#263c36"/>
+              <path d="M222 214h3m23 0h3" stroke="#473832" stroke-width="3" stroke-linecap="round"/>
+              <path d="M229 229c4 3 9 3 13 0" fill="none" stroke="#8d4f43" stroke-width="2" stroke-linecap="round"/>
+              <path d="m273 275 36 7 12 74-49-7-8-58Z" fill="#f4e6b6"/>
+              <path d="M282 281c0-15 6-23 17-22 12 1 15 12 15 25" fill="none" stroke="#d1b97d" stroke-width="4"/>
+              <path d="M294 313c2-11 10-17 22-17-1 13-8 21-20 22m-1 0c-9-8-10-15-8-22 8 3 12 8 12 16" fill="none" stroke="#55896b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Student tending the collection -->
+              <path d="m418 314 77 10 20 82-22 10-32-59-36 54-22-10 28-59-37-11 24-23Z" fill="#596789"/>
+              <path d="m472 396 24 10 4 15-32-5-9-9zM412 393l23 11-2 15-31-2-4-7z" fill="#f0bb6d"/>
+              <path d="M405 250c9-21 30-31 51-23 18 7 24 25 21 46l-9 67c-21 13-50 10-68-7l-1-51c-1-14 1-24 6-32Z" fill="#5d9c79"/>
+              <path d="m409 275-26 29 3 41 14 1 5-30 25-22m47-17 19 25-9 33-13-3 4-24-17-20" fill="#c8815e"/>
+              <path d="M404 232c-1-21 13-38 34-39 22-2 37 14 37 36 0 17-9 30-24 35-14 4-29-2-39-12-6-7-8-12-8-20Z" fill="#d39368"/>
+              <path d="M402 231c-4-15 2-34 15-43 19-13 45-6 55 11l-2 19c-12-5-21-11-27-22-7 13-23 22-41 24v11Z" fill="#2f3934"/>
+              <path d="M421 234h3m21 0h3" stroke="#443933" stroke-width="3" stroke-linecap="round"/>
+              <path d="M428 248c4 3 9 3 13 0" fill="none" stroke="#965d4c" stroke-width="2" stroke-linecap="round"/>
+              <!-- Collection crate and the donated devices -->
+              <path d="M324 332h108l-11 91H335l-11-91Z" fill="url(#box-grad)"/>
+              <path d="m312 319 12-13h108l12 13-12 15H324l-12-15Z" fill="#26795c"/>
+              <path d="M334 341h88" stroke="#77bb91" stroke-width="2" opacity=".6"/>
+              <path d="m368 363 10-18 10 18h-7l8 14-22-10h9l-8-4Z" fill="#d9f28b"/>
+              <rect x="343" y="275" width="58" height="41" rx="5" transform="rotate(-5 343 275)" fill="#343f4f"/>
+              <rect x="348" y="279" width="48" height="31" rx="3" transform="rotate(-5 348 279)" fill="#8ac7a1"/>
+              <path d="m337 318 69-6 7 9-79 7 3-10Z" fill="#bac8b5"/>
+              <rect x="414" y="280" width="19" height="33" rx="4" transform="rotate(9 414 280)" fill="#333e4b"/>
+              <rect x="417" y="284" width="13" height="24" rx="2" transform="rotate(9 417 284)" fill="#f0d26e"/>
+              <!-- New growth -->
+              <path d="M103 416h50l-6 39h-38l-6-39Z" fill="#c97853"/>
+              <path d="M127 416c-4-40-22-49-34-46 3 17 15 27 34 31m1 15c8-37 26-45 37-39-5 17-17 25-36 27m-2-24c-1-24 7-36 14-42 8 17 6 31-2 44" fill="#4e916c"/>
+              <path d="M510 429h45l-5 32h-35l-5-32Z" fill="#e8c96a"/>
+              <path d="M530 430c-7-32-20-37-30-33 4 14 14 21 30 23m0 10c5-29 20-35 28-30-4 13-13 20-27 21m-2-17c0-20 7-29 13-33 6 14 5 26-1 35" fill="#5a9c70"/>
+              <path d="M76 466h489" stroke="#91b38c" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+              <circle cx="314" cy="100" r="4" fill="#82aa72"/><circle cx="296" cy="118" r="2.5" fill="#82aa72"/><circle cx="336" cy="89" r="3" fill="#eab94f"/>
+            </g>
+          </svg>
+          <div class="art-label art-label-top"><span><svg class="icon" aria-hidden="true"><use href="#icon-leaf"></use></svg></span> GIVE TECH A SECOND LIFE</div>
+          <div class="art-caption"><span class="caption-icon"><svg class="icon" aria-hidden="true"><use href="#icon-recycle"></use></svg></span><span><strong>Keep good things moving</strong><small>From unused electronics to new possibilities.</small></span></div>
+          <div class="art-sticker" aria-hidden="true"><span>BETTER<br>TOGETHER</span><svg class="icon"><use href="#icon-spark"></use></svg></div>
+        </div>
+      </div>
+      <div class="container hero-bottom-note"><span class="hero-rule"></span><p>One thoughtful handover can start a bigger campus conversation.</p><a href="#about" aria-label="Scroll to learn about VidyaSutra"><svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+    </section>
+
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="container about-layout">
+        <div class="about-heading reveal">
+          <p class="eyebrow"><span class="eyebrow-mark"></span> Less waste. More possibility.</p>
+          <h2 class="section-title" id="about-title">A better goodbye for old tech.<br><span>A brighter idea for education.</span></h2>
+        </div>
+        <div class="about-copy reveal">
+          <p>Unused electronics can linger in drawers or end up in unsafe disposal routes. At the same time, the cost of education can create real barriers for students.</p>
+          <p>VidyaSutra is a campus initiative concept for students of Vaish College of Engineering, Rohtak. It invites our community to explore responsible e-waste handover, authorized reuse and recycling, and transparent ways verified contributions might support education.</p>
+          <p class="about-caveat"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg><span>Recycling proceeds and student assistance are not guaranteed. Both depend on confirmed partners, verified records and available funding.</span></p>
+        </div>
+      </div>
+      <div class="container mission-grid">
+        <article class="mission-card mission-green reveal">
+          <span class="mission-icon"><svg class="icon" aria-hidden="true"><use href="#icon-recycle"></use></svg></span>
+          <p class="card-kicker">A healthier planet</p>
+          <h3>Make responsible e-waste choices easier.</h3>
+          <p>Help campus communities think beyond the junk drawer: repair what can be repaired, reuse what can be reused, and seek authorized routes for what cannot.</p>
+          <div class="mission-decoration"><svg class="icon" aria-hidden="true"><use href="#icon-leaf"></use></svg></div>
+        </article>
+        <article class="mission-card mission-dark reveal">
+          <span class="mission-icon"><svg class="icon" aria-hidden="true"><use href="#icon-cap"></use></svg></span>
+          <p class="card-kicker">A fairer opportunity</p>
+          <h3>Let care for the planet make room for learning.</h3>
+          <p>The long-term hope is to connect responsible recycling with verified educational support—without making promises before the funds and process exist.</p>
+          <div class="mission-decoration mission-decoration-cap"><svg class="icon" aria-hidden="true"><use href="#icon-cap"></use></svg></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section items-section" id="donate-items" aria-labelledby="items-title">
+      <div class="container">
+        <div class="section-heading items-heading reveal">
+          <div><p class="eyebrow"><span class="eyebrow-mark"></span> A second life starts at home</p><h2 class="section-title" id="items-title">What’s sitting unused <span>in your drawer?</span></h2></div>
+          <p class="section-subtitle">Vaish students can help start a more responsible campus conversation. Any real collection would follow confirmed partner guidance and safe handling.</p>
+        </div>
+        <div class="items-grid">
+          <article class="item-card reveal"><span class="item-icon item-icon-green"><svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg></span><h3>Phones &amp; tablets</h3><p>Old, unused or damaged devices, prepared with personal data removed.</p><span class="item-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span></article>
+          <article class="item-card reveal"><span class="item-icon item-icon-yellow"><svg class="icon" aria-hidden="true"><use href="#icon-laptop"></use></svg></span><h3>Laptops &amp; computers</h3><p>Devices and small computer equipment that need a responsible next step.</p><span class="item-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span></article>
+          <article class="item-card reveal"><span class="item-icon item-icon-lilac"><svg class="icon" aria-hidden="true"><use href="#icon-cable"></use></svg></span><h3>Chargers &amp; cables</h3><p>Power adapters, charging leads and other tangled extras you no longer use.</p><span class="item-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span></article>
+          <article class="item-card reveal"><span class="item-icon item-icon-coral"><svg class="icon" aria-hidden="true"><use href="#icon-keyboard"></use></svg></span><h3>Keyboards &amp; mice</h3><p>Peripherals that still work, need repair, or are ready for responsible sorting.</p><span class="item-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span></article>
+          <article class="item-card reveal"><span class="item-icon item-icon-blue"><svg class="icon" aria-hidden="true"><use href="#icon-headphones"></use></svg></span><h3>Earphones &amp; audio</h3><p>Headphones, earphones and other small personal electronics.</p><span class="item-arrow" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span></article>
+          <article class="item-card item-card-battery reveal"><span class="item-icon item-icon-yellow"><svg class="icon" aria-hidden="true"><use href="#icon-battery"></use></svg></span><h3>Batteries &amp; other tech</h3><p>These need special handling. Keep them separate and follow local authorized guidance.</p><span class="battery-safety"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Never dismantle at home</span></article>
+        </div>
+        <div class="items-bottom reveal"><span class="items-bottom-icon"><svg class="icon" aria-hidden="true"><use href="#icon-spark"></use></svg></span><p><strong>Not sure if it belongs?</strong> Tell us what you have in the interest form. A future collection team would confirm accepted items before any handover.</p><a class="text-link" href="#interest">Share your interest <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+      </div>
+    </section>
+
+    <section class="section process-section" id="how-it-works" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="eyebrow"><span class="eyebrow-mark"></span> Thoughtful at every handoff</p>
+          <h2 class="section-title" id="process-title">A simple idea, built <span>on responsible steps.</span></h2>
+          <p class="section-subtitle">The intended journey is easy to understand—and honest about what still needs to be put in place.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step reveal"><div class="step-icon"><svg class="icon" aria-hidden="true"><use href="#icon-heart"></use></svg></div><span class="step-kicker">START WITH INTEREST</span><h3>Tell us what you have</h3><p>Share your interest and the kinds of unused electronics you might donate.</p><span class="step-connector" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span></article>
+          <article class="process-step reveal"><div class="step-icon step-icon-yellow"><svg class="icon" aria-hidden="true"><use href="#icon-box"></use></svg></div><span class="step-kicker">PLAN A SAFE HANDOVER</span><h3>Coordinate through campus</h3><p>A real drive would only be arranged after safe collection details and partners are confirmed.</p><span class="step-connector" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span></article>
+          <article class="process-step reveal"><div class="step-icon step-icon-lilac"><svg class="icon" aria-hidden="true"><use href="#icon-recycle"></use></svg></div><span class="step-kicker">CHOOSE RESPONSIBLY</span><h3>Reuse or recycle</h3><p>Suitable devices may be reused; other items need responsible processing by authorized partners.</p><span class="step-connector" aria-hidden="true"><svg class="icon"><use href="#icon-arrow"></use></svg></span></article>
+          <article class="process-step reveal"><div class="step-icon step-icon-green"><svg class="icon" aria-hidden="true"><use href="#icon-cap"></use></svg></div><span class="step-kicker">KEEP IT TRANSPARENT</span><h3>Explore education support</h3><p>Verified proceeds and contributions could support eligible students if funds and a fair review process are available.</p></article>
+        </div>
+        <div class="process-note reveal"><svg class="icon" aria-hidden="true"><use href="#icon-lock"></use></svg><p><strong>Where we are:</strong> VidyaSutra is a college project concept for the Vaish campus. This website does not collect devices, book pickups, receive applications or transfer money.</p></div>
+      </div>
+    </section>
+
+    <section class="section student-section" aria-labelledby="student-title">
+      <div class="student-background-shape" aria-hidden="true"></div>
+      <div class="container student-layout">
+        <div class="student-copy reveal">
+          <p class="eyebrow eyebrow-light"><span class="eyebrow-mark"></span> From our college community to our students</p>
+          <h2 class="section-title" id="student-title">Vaish students can turn <span>good intentions into a campus movement.</span></h2>
+          <p>Whether you are a student, class representative, faculty mentor or part of a society at Vaish College of Engineering, your voice can help our campus explore responsible e-waste donation.</p>
+          <a class="button button-lime" href="#interest">Join the Vaish campus initiative <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+          <p class="student-small-note">Registering interest does not commit your institution or schedule a collection.</p>
+        </div>
+        <div class="campus-ideas reveal">
+          <article class="campus-idea"><span class="idea-icon"><svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg></span><div><h3>Bring your class along</h3><p>Start a conversation with your department, society or student council.</p></div><svg class="idea-arrow icon" aria-hidden="true"><use href="#icon-up-right"></use></svg></article>
+          <article class="campus-idea"><span class="idea-icon idea-icon-yellow"><svg class="icon" aria-hidden="true"><use href="#icon-recycle"></use></svg></span><div><h3>Make safe recycling visible</h3><p>Share device-preparation tips and ask for authorized collection routes.</p></div><svg class="idea-arrow icon" aria-hidden="true"><use href="#icon-up-right"></use></svg></article>
+          <article class="campus-idea"><span class="idea-icon idea-icon-pink"><svg class="icon" aria-hidden="true"><use href="#icon-cap"></use></svg></span><div><h3>Keep education at the centre</h3><p>Help shape a careful, respectful idea for future student support.</p></div><svg class="idea-arrow icon" aria-hidden="true"><use href="#icon-up-right"></use></svg></article>
+          <div class="campus-quote"><svg class="icon" aria-hidden="true"><use href="#icon-spark"></use></svg><p>A small act of care can inspire a whole campus to think differently.</p><span>Our campus belief</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prepare-section" id="prepare" aria-labelledby="prepare-title">
+      <div class="container">
+        <div class="prepare-heading reveal"><div><p class="eyebrow"><span class="eyebrow-mark"></span> Make the handover safer</p><h2 class="section-title" id="prepare-title">Before you pass on a device, <span>protect people and data.</span></h2></div><p>Responsible donation starts before collection. Follow device-maker instructions and local guidance where they differ.</p></div>
+        <div class="prepare-grid">
+          <article class="prepare-card prepare-feature reveal"><div class="prepare-art"><div class="data-device"><span></span><span></span><span></span><i><svg class="icon"><use href="#icon-lock"></use></svg></i></div><div class="data-leaf"><svg class="icon"><use href="#icon-leaf"></use></svg></div></div><div class="prepare-content"><span class="prepare-kicker">YOUR PERSONAL DATA</span><h3>Give your information a clean break.</h3><p>Back up anything you need, sign out of accounts, remove SIM and memory cards, and use the manufacturer’s guidance to erase or reset the device. Never share passwords or unlock codes.</p></div></article>
+          <article class="prepare-card reveal"><span class="prepare-icon prepare-icon-lime"><svg class="icon" aria-hidden="true"><use href="#icon-recycle"></use></svg></span><span class="prepare-kicker">DEVICE CONDITION</span><h3>Keep reusable items together.</h3><p>Note whether an item works, needs repair or no longer powers on. Avoid mixing electronics with household waste or leaving them where they can be damaged.</p></article>
+          <article class="prepare-card prepare-warning reveal"><span class="prepare-icon prepare-icon-yellow"><svg class="icon" aria-hidden="true"><use href="#icon-battery"></use></svg></span><span class="prepare-kicker">BATTERY SAFETY</span><h3>Keep batteries out of general waste.</h3><p>Do not crush, puncture, charge or dismantle batteries at home. Keep loose batteries separate and follow local authorized collection advice.</p><div class="warning-note"><strong>Swollen, hot or leaking battery?</strong><span>Do not handle or transport it yourself. Keep it away from heat and seek local authorized safety guidance.</span></div></article>
+          <article class="prepare-card reveal"><span class="prepare-icon prepare-icon-green"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg></span><span class="prepare-kicker">AUTHORIZED ROUTES</span><h3>Ask who handles the materials.</h3><p>Before any real handover, check accepted items, partner credentials, safe storage and whether you’ll receive a clear record of the collection.</p><div class="partner-pending"><svg class="icon" aria-hidden="true"><use href="#icon-lock"></use></svg><span>Partner details will be shared only once verified.</span></div></article>
+        </div>
+        <p class="safe-footer reveal"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg> If you’re unsure, don’t dismantle or place the item in a public bin—ask your local waste authority or an authorized recycler for safe guidance.</p>
+      </div>
+    </section>
+
+    <section class="section trust-section" aria-labelledby="trust-title">
+      <div class="container trust-layout">
+        <div class="trust-copy reveal"><p class="eyebrow eyebrow-light"><span class="eyebrow-mark"></span> No inflated claims. Just a clear intention.</p><h2 class="section-title" id="trust-title">Trust grows when <span>every step is visible.</span></h2><p>VidyaSutra is a college-to-student initiative concept. Before a real collection begins, Vaish students should know who is organizing it, how devices are handled and which authorized partner is involved.</p><a class="button button-outline-light" href="#interest">Help shape the campus conversation <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+        <div class="trust-checklist reveal"><div class="trust-row"><span class="trust-check"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg></span><div><strong>Responsible partner details</strong><small>Share authorized recycler information after it is confirmed.</small></div></div><div class="trust-row"><span class="trust-check"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg></span><div><strong>Private student review</strong><small>Protect applicants and verify eligibility through a secure process.</small></div></div><div class="trust-row"><span class="trust-check"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg></span><div><strong>Clear use of contributions</strong><small>Publish real allocation and impact information only when records support it.</small></div></div><div class="trust-stamp"><svg class="icon" aria-hidden="true"><use href="#icon-leaf"></use></svg><span>Care for devices.<br>Care for each other.</span></div></div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <div class="faq-intro reveal"><p class="eyebrow"><span class="eyebrow-mark"></span> Good questions, clear answers</p><h2 class="section-title" id="faq-title">Curious about <span>donating?</span></h2><p>Here’s what to know about the idea, safe preparation and what this website can—and can’t—do.</p><a class="text-link" href="#interest">Share your interest <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></a><div class="faq-decoration" aria-hidden="true"><span></span><svg class="icon"><use href="#icon-leaf"></use></svg></div></div>
+        <div class="faq-list reveal">
+          <article class="faq-item"><h3><button class="faq-question" id="faq-q1" type="button" aria-expanded="false" aria-controls="faq-a1"><span>What is e-waste?</span><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button></h3><div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden><p>E-waste is unwanted or discarded electrical and electronic equipment, such as phones, computers, chargers, cables, headphones and batteries.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" id="faq-q2" type="button" aria-expanded="false" aria-controls="faq-a2"><span>Which electronics could I donate?</span><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button></h3><div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden><p>The page highlights common small electronics, computers, accessories and batteries. A real programme would confirm what its authorized recycling partner can safely accept before any collection.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" id="faq-q3" type="button" aria-expanded="false" aria-controls="faq-a3"><span>Does submitting interest book a pickup?</span><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button></h3><div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden><p>No. VidyaSutra is currently a frontend college-project concept for Vaish students. The form demonstrates interest only; it is not sent to the college, does not schedule a collection and does not confirm that an item will be accepted.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" id="faq-q4" type="button" aria-expanded="false" aria-controls="faq-a4"><span>How could e-waste support education?</span><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button></h3><div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden><p>The long-term concept is to connect verified recycling proceeds and other contributions with eligible students’ education costs. Any support would depend on actual funds, a transparent review process and available funding—not on a guaranteed recycling return.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" id="faq-q5" type="button" aria-expanded="false" aria-controls="faq-a5"><span>Is there a cost to express interest?</span><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button></h3><div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5" hidden><p>This website does not arrange a real collection or set collection terms. Confirm any costs and handover details with an authorized local organizer before giving away a device.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" id="faq-q6" type="button" aria-expanded="false" aria-controls="faq-a6"><span>How should I prepare my device?</span><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button></h3><div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6" hidden><p>Back up what you need, sign out of accounts, remove SIM and memory cards, and follow the manufacturer’s secure reset or erase guidance. Keep batteries separate and never dismantle electronics at home.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" id="faq-q7" type="button" aria-expanded="false" aria-controls="faq-a7"><span>Can a Vaish department or student society start a drive?</span><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button></h3><div class="faq-answer" id="faq-a7" role="region" aria-labelledby="faq-q7" hidden><p>A department or student society could explore a drive with college guidance after confirming an authorized partner, accepted-item rules, safe storage, battery handling and clear communication. This interest form cannot approve or schedule a drive.</p></div></article>
+          <article class="faq-item"><h3><button class="faq-question" id="faq-q8" type="button" aria-expanded="false" aria-controls="faq-a8"><span>Will my information be sent or saved?</span><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button></h3><div class="faq-answer" id="faq-a8" role="region" aria-labelledby="faq-q8" hidden><p>No. This frontend has no backend, so the form is not transmitted or stored. Please do not enter real contact information or sensitive details on this project version.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- The only form on the page: donation interest is intentionally last. -->
+    <section class="section interest-section" id="interest" aria-labelledby="interest-title">
+      <div class="interest-sunburst" aria-hidden="true"></div>
+      <div class="container interest-layout">
+        <div class="interest-copy reveal"><p class="eyebrow eyebrow-light"><span class="eyebrow-mark"></span> Your next small step</p><h2 class="section-title" id="interest-title">Make space in your drawer. <span>Make room for possibility.</span></h2><p>Let us know what you might donate and help your campus explore a more responsible way forward.</p><div class="interest-promise"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg><p><strong>Honest by design.</strong> This is a frontend concept form. Nothing is sent or saved, and no collection is booked.</p></div><div class="interest-signoff"><span class="signoff-line"></span><span>Recycle e-waste. Support students. Build a greener future.</span></div></div>
+        <div class="interest-card reveal"><div class="interest-card-heading"><div><p class="card-kicker">DONATION INTEREST</p><h3>Tell us what you’d like to pass on</h3></div><span class="interest-card-icon"><svg class="icon" aria-hidden="true"><use href="#icon-leaf"></use></svg></span></div><p class="interest-intro">Are you a Vaish student interested in donating unused electronics? Share only what is needed to express interest. Please use fictional details while this project has no secure backend.</p>
+          <!-- FUTURE DATABASE CONNECTION PLACEHOLDER: connect in script.js to a secure server-side endpoint only after backend setup. Never add database credentials to frontend code. -->
+          <form id="interest-form" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="interest-name">Your name <span>*</span></label><input id="interest-name" name="name" type="text" autocomplete="name" required placeholder="Your name"><small class="field-error" id="interest-name-error"></small></div>
+              <div class="field"><label for="interest-email">Email address <span>*</span></label><input id="interest-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"><small class="field-error" id="interest-email-error"></small></div>
+              <div class="field field-full"><label for="interest-campus">Department, class or student group <span>*</span></label><input id="interest-campus" name="studentGroup" type="text" autocomplete="organization" required placeholder="Your department, class or student society"><small class="field-error" id="interest-campus-error"></small></div>
+              <fieldset class="field field-full item-fieldset" aria-describedby="interest-items-error"><legend>What might you donate? <span>*</span></legend><p class="field-hint">Select any that apply.</p><div class="item-options">
+                <label class="item-option"><input type="checkbox" name="items" value="Phones and tablets"><span class="option-check" aria-hidden="true"></span><svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg><span>Phones &amp; tablets</span></label>
+                <label class="item-option"><input type="checkbox" name="items" value="Laptops and computers"><span class="option-check" aria-hidden="true"></span><svg class="icon" aria-hidden="true"><use href="#icon-laptop"></use></svg><span>Laptops &amp; computers</span></label>
+                <label class="item-option"><input type="checkbox" name="items" value="Chargers and cables"><span class="option-check" aria-hidden="true"></span><svg class="icon" aria-hidden="true"><use href="#icon-cable"></use></svg><span>Chargers &amp; cables</span></label>
+                <label class="item-option"><input type="checkbox" name="items" value="Keyboards and mice"><span class="option-check" aria-hidden="true"></span><svg class="icon" aria-hidden="true"><use href="#icon-keyboard"></use></svg><span>Keyboards &amp; mice</span></label>
+                <label class="item-option"><input type="checkbox" name="items" value="Earphones and headphones"><span class="option-check" aria-hidden="true"></span><svg class="icon" aria-hidden="true"><use href="#icon-headphones"></use></svg><span>Earphones &amp; headphones</span></label>
+                <label class="item-option"><input type="checkbox" name="items" value="Batteries or other electronics"><span class="option-check" aria-hidden="true"></span><svg class="icon" aria-hidden="true"><use href="#icon-battery"></use></svg><span>Batteries / other items</span></label>
+              </div><small class="field-error" id="interest-items-error"></small></fieldset>
+              <div class="field field-full"><label for="interest-note">Anything else you’d like us to know? <span class="optional-label">Optional</span></label><textarea id="interest-note" name="note" rows="3" placeholder="A general note about your campus or the kind of collection you’d like to see"></textarea><small class="field-hint">Please do not include a home address, passwords or sensitive personal information.</small></div>
+              <div class="field field-full consent-field"><label class="check-control" for="interest-consent"><input id="interest-consent" name="consent" type="checkbox" required><span class="custom-check" aria-hidden="true"></span><span>I understand this is an on-page demonstration only, and consent to the <button class="inline-link" type="button" data-dialog="privacy-dialog">privacy notice</button>. <b>*</b></span></label><small class="field-error" id="interest-consent-error"></small></div>
+            </div>
+            <button class="button button-dark button-wide" type="submit">Register my interest <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg></button>
+            <p class="form-footnote"><svg class="icon" aria-hidden="true"><use href="#icon-lock"></use></svg> No information is transmitted or stored. No pickup is booked.</p>
+            <div class="form-status" id="interest-status" role="status" aria-live="polite" tabindex="-1"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand-col"><a class="brand brand-footer" href="#home" aria-label="VidyaSutra at Vaish College of Engineering, Rohtak — home"><span class="brand-mark"><img src="vaish-college-seal.jpg" alt="Vaish College of Engineering, Rohtak crest"></span><span class="brand-name"><span class="brand-word">Vidya<span>Sutra</span></span><small>Where E-Waste Powers Education.</small></span></a><p>Recycle e-waste.<br>Support students.<br>Build a greener future.</p><span class="footer-concept"><span class="footer-dot"></span> A campus project for Vaish students</span></div>
+      <div class="footer-links-col"><h2>Explore</h2><a href="#about">Why VidyaSutra</a><a href="#donate-items">What to donate</a><a href="#how-it-works">How it works</a><a href="#prepare">Safe handover</a></div>
+      <div class="footer-links-col"><h2>Get involved</h2><a href="#interest">Register interest</a><a href="#faq">Frequently asked questions</a><a href="#interest">Bring it to your campus</a><button class="footer-policy-link" type="button" data-dialog="privacy-dialog">Privacy notice</button><button class="footer-policy-link" type="button" data-dialog="terms-dialog">Project terms</button></div>
+      <div class="footer-future"><span class="footer-future-icon"><svg class="icon" aria-hidden="true"><use href="#icon-recycle"></use></svg></span><strong>Partner information</strong><p>College collection details and authorized recycling partners will be shared once confirmed.</p></div>
+    </div>
+    <div class="container footer-bottom"><span>VidyaSutra · Vaish College of Engineering, Rohtak</span><span>Designed for a greener, more inclusive future.</span><a href="#top" class="footer-top-link">Back to top ↑</a></div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top"><svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="policy-dialog" id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-header"><div><p class="card-kicker">PRIVACY NOTICE</p><h2 id="privacy-title">Your details stay in this browser</h2></div><button class="dialog-close" type="button" aria-label="Close privacy notice"><svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="dialog-body"><p>This website is a frontend college-project concept. The donation-interest form validates entries on this page only. It does not send information to a server, database, email inbox or third party, and it does not save the form contents in local storage.</p><p>Please use fictional details while there is no secure backend. Do not enter real contact information, home addresses, passwords, account details or other sensitive personal information.</p><p>A real service would need a reviewed privacy policy, secure storage, access controls, retention limits, consent and a way to contact the programme about personal information.</p></div><button class="button button-dark dialog-done" type="button">Understood</button></dialog>
+  <dialog class="policy-dialog" id="terms-dialog" aria-labelledby="terms-title"><div class="dialog-header"><div><p class="card-kicker">PROJECT TERMS</p><h2 id="terms-title">A concept, not a collection service</h2></div><button class="dialog-close" type="button" aria-label="Close project terms"><svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="dialog-body"><p>VidyaSutra is a campus project concept for students of Vaish College of Engineering, Rohtak. This website does not collect e-waste, schedule pickups, accept student applications, approve assistance, transfer money or connect to authorized recyclers.</p><p>Registering interest displays an on-page response only. No interest is transmitted or stored and no collection is confirmed. Confirm accepted items, costs and safe handling with an authorized local service before any real handover.</p><p>Any future support would depend on verified contributions, eligibility review and available funding. Do not treat potential recycling value or education assistance as guaranteed.</p></div><button class="button button-dark dialog-done" type="button">Close</button></dialog>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
