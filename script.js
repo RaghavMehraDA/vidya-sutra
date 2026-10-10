@@ -2,49 +2,52 @@
   VidyaSutra interactions: attractive loader, accessible navigation, FAQ and
   one donation-interest form.
 
-  The form can deliver submissions to a Google Form. Until FORM_CONFIG.formId
-  below is filled in, the form stays a safe on-page demo and nothing is sent.
-  When configured, submissions are POSTed to Google Forms and every on-page
-  disclaimer switches from its "demo" wording to its "live" wording.
+  The form can deliver submissions to Supabase (preferred) or a Google Form.
+  Until a provider is configured below, the form stays a safe on-page demo and
+  NOTHING is transmitted. When configured, submissions are sent to the chosen
+  provider and every on-page disclaimer switches from its "demo" wording to its
+  "live" wording.
 */
 document.addEventListener('DOMContentLoaded', () => {
   /*
-    Google Forms delivery configuration
-    -----------------------------------
-    To make the interest form send responses to a Google Form:
+    Interest-form delivery configuration
+    ------------------------------------
+    `provider` is 'none' by default, which keeps the safe demo (nothing sent).
 
-    1. Create a Google Form with these questions (same order is easiest):
-         - Your name                            (Short answer, required)
-         - Email address                        (Short answer, required)
-         - Department, class or student group   (Short answer, required)
-         - What might you donate?               (Checkboxes)
-         - Anything else                        (Paragraph)
-         - Consent                              (Checkboxes with one "Yes" option)
-    2. Open the form's live "viewform" link. The form ID is the long token
-       between /d/e/ and /viewform:
-         https://docs.google.com/forms/d/e/1FAIpQLSd...xyz/viewform
-                                            ^^^^^^^^^^^^^^^^^ formId
-    3. Find each question's entry ID. The simplest way is "Get pre-filled link":
-       type a marker into each field, click "Get link", and read the
-       entry.XXXXXXXXXX values out of the generated URL.
-    4. Paste the formId and the entry IDs below, then save and push.
+    Supabase setup
+    --------------
+    1. Create a project at https://supabase.com and open the SQL editor.
+    2. Run the table + Row Level Security SQL from the README section
+       "Connect the form to Supabase".
+    3. In Project Settings -> API copy the "Project URL" and the public "anon"
+       key into the supabase block below, then set provider to 'supabase'.
 
-    Google Forms does not return CORS headers, so submissions use mode: 'no-cors'
-    and the browser cannot read the reply. The page therefore shows a success
-    message once the request resolves rather than confirming it server-side.
+    Security: the anon key is designed to be public in browser code. It is only
+    safe because Row Level Security restricts the anon role to INSERT (no read,
+    update or delete). NEVER paste the service_role key into this file.
+
+    Google Forms is kept as an optional alternative; see the README.
   */
   const FORM_CONFIG = {
-    formId: '',
-    entries: {
-      name: '',
-      email: '',
-      studentGroup: '',
-      items: '',   // checkboxes: one value is appended per selected item
-      note: '',
-      consent: ''
+    provider: 'none', // 'none' | 'supabase' | 'googleForms'
+
+    supabase: {
+      url: '',                     // e.g. 'https://abcdefghijklm.supabase.co'
+      anonKey: '',                 // the public 'anon' key — never 'service_role'
+      table: 'donation_interests'
+    },
+
+    googleForms: {
+      formId: '',
+      entries: { name: '', email: '', studentGroup: '', items: '', note: '', consent: '' }
     }
   };
-  const FORM_LIVE = FORM_CONFIG.formId.trim() !== '';
+
+  const FORM_LIVE = (() => {
+    if (FORM_CONFIG.provider === 'supabase') return Boolean(FORM_CONFIG.supabase.url && FORM_CONFIG.supabase.anonKey);
+    if (FORM_CONFIG.provider === 'googleForms') return FORM_CONFIG.googleForms.formId.trim() !== '';
+    return false;
+  })();
 
   // Keep every on-page claim accurate: reveal the "live" wording only when the
   // form is actually connected, and keep the honest "demo" wording otherwise.
@@ -132,14 +135,45 @@ document.addEventListener('DOMContentLoaded', () => {
     revealItems.forEach((item) => item.classList.add('is-visible'));
   }
 
-  /*
-   * Builds an application/x-www-form-urlencoded body for Google Forms from the
-   * validated form. Keys are the entry.<id> names in FORM_CONFIG.entries; any
-   * entry id left blank is simply skipped.
-   */
+  // Reads the validated form into a plain object. Nothing is sent unless the
+  // configured provider is actually set up.
+  function readInterestForm(form) {
+    const data = new FormData(form);
+    return {
+      name: (data.get('name') || '').toString().trim(),
+      email: (data.get('email') || '').toString().trim(),
+      student_group: (data.get('studentGroup') || '').toString().trim(),
+      items: data.getAll('items').map((item) => item.toString()),
+      note: (data.get('note') || '').toString().trim(),
+      consent: Boolean(data.get('consent'))
+    };
+  }
+
+  // ---- Supabase delivery (PostgREST over fetch, no library) ---------------
+  function submitToSupabase(form) {
+    const config = FORM_CONFIG.supabase;
+    const endpoint = `${config.url.replace(/\/+$/, '')}/rest/v1/${config.table}`;
+    const record = readInterestForm(form);
+    if (!record.note) delete record.note; // let the column default/empty apply
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        apikey: config.anonKey,
+        Authorization: `Bearer ${config.anonKey}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal'
+      },
+      body: JSON.stringify(record)
+    }).then((response) => {
+      if (!response.ok) throw new Error(`Supabase insert failed with status ${response.status}`);
+      return response;
+    });
+  }
+
+  // ---- Optional Google Forms delivery ------------------------------------
   function buildGoogleFormBody(form) {
     const data = new FormData(form);
-    const entries = FORM_CONFIG.entries;
+    const entries = FORM_CONFIG.googleForms.entries;
     const body = new URLSearchParams();
 
     const setValue = (key, value) => {
@@ -158,13 +192,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function submitToGoogleForm(form) {
-    const endpoint = `https://docs.google.com/forms/d/e/${encodeURIComponent(FORM_CONFIG.formId)}/formResponse`;
+    const endpoint = `https://docs.google.com/forms/d/e/${encodeURIComponent(FORM_CONFIG.googleForms.formId)}/formResponse`;
     return fetch(endpoint, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: buildGoogleFormBody(form).toString()
     });
+  }
+
+  function submitInterestForm(form) {
+    return FORM_CONFIG.provider === 'supabase' ? submitToSupabase(form) : submitToGoogleForm(form);
   }
 
 
@@ -279,10 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setStatus('is-loading', '<strong>Sending your interest…</strong>Please wait a moment.');
 
     try {
-      await submitToGoogleForm(interestForm);
+      await submitInterestForm(interestForm);
       interestForm.reset();
       clearInterestFormErrors(interestForm);
-      setStatus('', '<strong>Thanks for your interest.</strong>Your details were submitted to the programme\'s Google Form. No pickup has been booked.');
+      setStatus('', '<strong>Thanks for your interest.</strong>Your details were saved to the programme\'s secure database. No pickup has been booked.');
       showToast('Interest submitted — no pickup has been booked.');
     } catch (error) {
       setStatus('is-error', '<strong>We could not send that.</strong>Please check your connection and try again, or contact the programme another way.');
