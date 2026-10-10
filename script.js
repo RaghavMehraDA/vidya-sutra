@@ -1,9 +1,56 @@
 /*
   VidyaSutra interactions: attractive loader, accessible navigation, FAQ and
-  one donation-interest form. This project has no backend, so form entries are
-  validated in the browser and are never transmitted or stored.
+  one donation-interest form.
+
+  The form can deliver submissions to a Google Form. Until FORM_CONFIG.formId
+  below is filled in, the form stays a safe on-page demo and nothing is sent.
+  When configured, submissions are POSTed to Google Forms and every on-page
+  disclaimer switches from its "demo" wording to its "live" wording.
 */
 document.addEventListener('DOMContentLoaded', () => {
+  /*
+    Google Forms delivery configuration
+    -----------------------------------
+    To make the interest form send responses to a Google Form:
+
+    1. Create a Google Form with these questions (same order is easiest):
+         - Your name                            (Short answer, required)
+         - Email address                        (Short answer, required)
+         - Department, class or student group   (Short answer, required)
+         - What might you donate?               (Checkboxes)
+         - Anything else                        (Paragraph)
+         - Consent                              (Checkboxes with one "Yes" option)
+    2. Open the form's live "viewform" link. The form ID is the long token
+       between /d/e/ and /viewform:
+         https://docs.google.com/forms/d/e/1FAIpQLSd...xyz/viewform
+                                            ^^^^^^^^^^^^^^^^^ formId
+    3. Find each question's entry ID. The simplest way is "Get pre-filled link":
+       type a marker into each field, click "Get link", and read the
+       entry.XXXXXXXXXX values out of the generated URL.
+    4. Paste the formId and the entry IDs below, then save and push.
+
+    Google Forms does not return CORS headers, so submissions use mode: 'no-cors'
+    and the browser cannot read the reply. The page therefore shows a success
+    message once the request resolves rather than confirming it server-side.
+  */
+  const FORM_CONFIG = {
+    formId: '',
+    entries: {
+      name: '',
+      email: '',
+      studentGroup: '',
+      items: '',   // checkboxes: one value is appended per selected item
+      note: '',
+      consent: ''
+    }
+  };
+  const FORM_LIVE = FORM_CONFIG.formId.trim() !== '';
+
+  // Keep every on-page claim accurate: reveal the "live" wording only when the
+  // form is actually connected, and keep the honest "demo" wording otherwise.
+  document.querySelectorAll('[data-live-only]').forEach((element) => { element.hidden = !FORM_LIVE; });
+  document.querySelectorAll('[data-demo-only]').forEach((element) => { element.hidden = FORM_LIVE; });
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const toast = document.getElementById('toast');
   let toastTimer;
@@ -86,20 +133,40 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /*
-   * FUTURE DATABASE CONNECTION PLACEHOLDER — intentionally inactive.
-   * When a secure backend is ready, replace the local-only success handler below
-   * with a POST to a server route such as /api/donation-interests. Example shape:
-   *
-   *   const response = await fetch('/api/donation-interests', {
-   *     method: 'POST',
-   *     headers: { 'Content-Type': 'application/json' },
-   *     body: JSON.stringify(validatedInterest)
-   *   });
-   *
-   * Keep this example commented until the server endpoint exists. Validate again
-   * on the server, use HTTPS and appropriate CSRF / abuse protections, and never
-   * connect the browser directly to a database or put database credentials here.
+   * Builds an application/x-www-form-urlencoded body for Google Forms from the
+   * validated form. Keys are the entry.<id> names in FORM_CONFIG.entries; any
+   * entry id left blank is simply skipped.
    */
+  function buildGoogleFormBody(form) {
+    const data = new FormData(form);
+    const entries = FORM_CONFIG.entries;
+    const body = new URLSearchParams();
+
+    const setValue = (key, value) => {
+      const entryId = entries[key];
+      if (entryId && value !== null && value !== undefined && value !== '') body.append(entryId, value);
+    };
+
+    setValue('name', (data.get('name') || '').toString().trim());
+    setValue('email', (data.get('email') || '').toString().trim());
+    setValue('studentGroup', (data.get('studentGroup') || '').toString().trim());
+    setValue('note', (data.get('note') || '').toString().trim());
+    data.getAll('items').forEach((item) => setValue('items', item.toString()));
+    if (entries.consent) body.append(entries.consent, data.get('consent') ? 'Yes' : 'No');
+
+    return body;
+  }
+
+  function submitToGoogleForm(form) {
+    const endpoint = `https://docs.google.com/forms/d/e/${encodeURIComponent(FORM_CONFIG.formId)}/formResponse`;
+    return fetch(endpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: buildGoogleFormBody(form).toString()
+    });
+  }
+
 
   // Donation-interest form helpers. No form values are read after validation.
   function getErrorElement(field) {
@@ -187,6 +254,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const interestForm = document.getElementById('interest-form');
   const interestStatus = document.getElementById('interest-status');
 
+  function setStatus(kind, html) {
+    if (!interestStatus) return;
+    interestStatus.classList.remove('is-loading', 'is-error');
+    if (kind) interestStatus.classList.add(kind);
+    interestStatus.innerHTML = html;
+    interestStatus.classList.add('is-visible');
+    interestStatus.focus({ preventScroll: true });
+  }
+
+  function handleDemoSubmission() {
+    interestForm.reset();
+    clearInterestFormErrors(interestForm);
+    setStatus('', '<strong>Thanks for your interest.</strong>This was an on-page demonstration only. No details were sent or saved, and no collection has been booked.');
+    showToast('Interest noted on this page only — no pickup has been booked.');
+  }
+
+  async function handleLiveSubmission() {
+    const submitButton = interestForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.setAttribute('aria-busy', 'true');
+    }
+    setStatus('is-loading', '<strong>Sending your interest…</strong>Please wait a moment.');
+
+    try {
+      await submitToGoogleForm(interestForm);
+      interestForm.reset();
+      clearInterestFormErrors(interestForm);
+      setStatus('', '<strong>Thanks for your interest.</strong>Your details were submitted to the programme\'s Google Form. No pickup has been booked.');
+      showToast('Interest submitted — no pickup has been booked.');
+    } catch (error) {
+      setStatus('is-error', '<strong>We could not send that.</strong>Please check your connection and try again, or contact the programme another way.');
+      showToast('Could not submit right now. Please try again.');
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.removeAttribute('aria-busy');
+      }
+    }
+  }
+
   if (interestForm) {
     interestForm.addEventListener('input', (event) => {
       const field = event.target;
@@ -214,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    interestForm.addEventListener('submit', (event) => {
+    interestForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const invalidFields = validateInterestForm(interestForm);
       if (invalidFields.length) {
@@ -225,17 +333,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // FUTURE DATABASE HOOK: after backend setup, send a minimal validated payload
-      // to the secure server route above and wait for confirmation before success.
-      // This prototype deliberately makes no request and does not persist form data.
-      interestForm.reset();
-      clearInterestFormErrors(interestForm);
-      if (interestStatus) {
-        interestStatus.innerHTML = '<strong>Thanks for your interest.</strong>This was an on-page demonstration only. No details were sent or saved, and no collection has been booked.';
-        interestStatus.classList.add('is-visible');
-        interestStatus.focus({ preventScroll: true });
-      }
-      showToast('Interest noted on this page only — no pickup has been booked.');
+      // Deliver to Google Forms when configured; otherwise stay an on-page demo.
+      if (FORM_LIVE) await handleLiveSubmission();
+      else handleDemoSubmission();
     });
   }
 
