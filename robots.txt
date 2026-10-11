@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://raghavmehrada.github.io/vidya-sutra/sitemap.xml

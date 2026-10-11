@@ -15,8 +15,6 @@ A responsive, static college-project website for students of Vaish College of En
 ├── style.css
 ├── script.js
 ├── vaish-college-seal.jpg
-├── robots.txt
-├── sitemap.xml
 ├── .nojekyll
 ├── .gitignore
 └── README.md
@@ -110,24 +108,6 @@ This project is already published from the `main` branch, `/(root)` folder.
 3. Every push to `main` redeploys the site automatically. The URL is <https://raghavmehrada.github.io/vidya-sutra/>.
 
 The `.nojekyll` file tells GitHub Pages to serve the files as-is. All page assets use relative paths, so they work both locally and under the GitHub Pages project URL.
-
-## Get found on Google Search
-
-The site ships with `robots.txt`, `sitemap.xml` and a canonical URL, so it is ready to be indexed. To ask Google to list it:
-
-1. Open [Google Search Console](https://search.google.com/search-console) and add a **URL prefix** property:
-   `https://raghavmehrada.github.io/vidya-sutra/`
-2. Verify ownership. On GitHub Pages the easiest method is the **HTML tag**:
-   - Choose **HTML tag** and copy the `<meta name="google-site-verification" ...>` line.
-   - Paste it inside `<head>` in `index.html`, then commit and push.
-   - Click **Verify** in Search Console.
-   (The **HTML file** method works too — drop the downloaded verification file in the project root and push.)
-3. Open **Sitemaps** and submit: `sitemap.xml`
-4. Use **URL Inspection → Request indexing** for the homepage to speed things up.
-
-Indexing is not instant — it can take from a few days to a few weeks, and re-submitting after major changes helps.
-
-> Note: Google reads `robots.txt` from the domain root (`https://raghavmehrada.github.io/robots.txt`). The copy in this project is still useful and harmless, and GitHub Pages is not blocked by default, so indexing works either way.
 
 ## Pushing updates
 
